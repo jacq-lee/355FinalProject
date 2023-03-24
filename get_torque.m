@@ -1,7 +1,7 @@
-function [torque_t, torque_v, torque_e] = get_torque(theta)
+function [torque_t, torque_v, torque_e] = get_torque(x1)
 
 % Inputs
-% theta: x1, the ankle joint angle
+% x1: theta, the ankle joint angle
 % q_dot??
 
 % Output
@@ -20,9 +20,11 @@ K = -1;
 d = 0.1;
 n = 0.099;
 
-torque_t = gamma_ma*f_t;
+f_t = f_ce + f_see + f_pe; % JL: + f_bar?, need to replace with get_force functions
 
-torque_e = e^(a_1k + b_1k*theta) - e^(a_2k + b_2k*x1) + c;
+torque_t = gamma_ma*f_t; 
+
+torque_e = e^(a_1k + b_1k*x1) - e^(a_2k + b_2k*x1) + c;
 
 torque_v = K*sign(q_dot)*(d*abs(q_dot))^n;
 
