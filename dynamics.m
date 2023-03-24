@@ -15,7 +15,9 @@ k1 = 0; % JL: add
 k2 = 0; % JL: add
 k3 = 0; % JL: add
 
-l_mt = ;
+
+%l_mt = tibialis_length;  %L(theta) = [origin - insertion] = lm + lt (non-normalized)
+l_mt = 
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 
