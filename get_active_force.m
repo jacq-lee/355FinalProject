@@ -1,10 +1,12 @@
 function [f_bar_ce] = get_active_force(x_3, V_m_bar)
 
 % Inputs
-% 
+% x_3: normalized muscle length
+% V_m_bar: normalized velocity of muscle
+
 F_bar = 30; %Normalized static force that is actually not really normalized?
 
-q_sf = %unknown value, Activiation signal
+q_sf = %unknown value, Activiation signal 
 
 %Relationship between force and length (eq 9)
 F_tilda_Fl_l_m = exp(-40*(x_3 -0.95)^4 + (x_3 -0.95)^2);
