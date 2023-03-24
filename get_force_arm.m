@@ -1,12 +1,11 @@
-function [gamma_ma] = get_force_arm(theta)
+function [gamma_ma] = get_force_arm(x1)
 
 % Inputs
-% theta: x1, the ankle joint angle
+% x1: theta, the ankle joint angle
 
 % Output
 % gamma_ma: force arm
 
-
-
+gamma_ma = -0.0069.*x1.^2 + 0.769.*x1 - 1.3602; % may have to be adjusted slightly for vector vs scalar?
 
 end
