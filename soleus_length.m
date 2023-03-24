@@ -1,7 +1,7 @@
-function [soleus_length] = soleus_length(theta)
+function [soleus_length] = soleus_length(x1)
 
 % Inputs
-% theta: body angle (up from prone horizontal)
+% x1 (theta): body angle (up from prone horizontal)
 
 % Output
 % soleus length
