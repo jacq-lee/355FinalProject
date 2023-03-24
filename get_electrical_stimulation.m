@@ -1,8 +1,8 @@
 function [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f)
 
 % Inputs
-% pw: pulse width
-% f: electrical stimulation frequency
+% pw: pulse width (microseconds)
+% f: electrical stimulation frequency (Hz)
 
 % Output
 % Q1_pw: electrical stimulation intensity
@@ -11,8 +11,8 @@ function [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f)
 pw_thr = % pulse width at the beginning of ankle dorsiflexion
 pw_sat = % pulse width at the maximum angle (pw_sat > pw_thr)
 
-a1 = 0.8323;
-a2 = 2.5;
+a1 = 0.8323; 
+a2 = 2.5; 
 R = 15;
 f_cf = 50; % critical fusion frequency, in Hertz
 
