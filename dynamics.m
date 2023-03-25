@@ -15,8 +15,14 @@ k1 = 0; % JL: add
 k2 = 0; % JL: add
 k3 = 0; % JL: add
 
+% rest_length_tibialis = tibialis_length*(pi/2);
+% norm_tendon = we assume value
 
-%l_mt = tibialis_length;  %L(theta) = [origin - insertion] = lm + lt (non-normalized)
+%L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized)
+%l_mt = tibialis_length;  
+
+% normalized lm is x3
+% x(3) = (tibialis_length - (0.4*rest_length_tibialis*norm_tendon))/(0.6*rest_length_tibialis)
 l_mt = 
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
