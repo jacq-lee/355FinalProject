@@ -1,4 +1,4 @@
-function [f_ce] = get_active_force(x3, v_m)
+function [f_ce] = get_active_force(x3, v_m, x4)
 
 % Inputs
 % x_3: normalized muscle length
@@ -13,8 +13,9 @@ F_bar = 30; % EB: Normalized static force that is actually not really normalized
 v_max = 2.5; % (m/s)
 vm_norm = v_m / v_max;
 
-
-q_sf = % EB: unknown value, Activiation signal 
+% MDM: find what q_sf means, in paper said to be "activation signal q (s,
+% f)" so maybe this is x(4) 
+q_sf = x4% EB: unknown value, Activiation signal 
 
 % Relationship between force and length (eq 9) - Normalized muscle force length
 f_Fl = exp(-40*(x3 -0.95)^4 + (x3 -0.95)^2);

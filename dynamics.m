@@ -11,7 +11,7 @@ x_dot = zeros(size(x)); % initialize x_dot
 % d = 0.25; % MDM: Selected Subject 1 for now (m)
 
 m = muscle_model.mass;
-d = muscle_model.d;
+d = muscle_model.distance;
 
 g = 9.81;
 
@@ -28,7 +28,6 @@ k3 = muscle_model.k3;
 
 pw = muscle_model.pw;
 f = muscle_model.f;
-
 % rest_length_tibialis = tibialis_length*(pi/2);
 
 %L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized) 
@@ -45,7 +44,12 @@ l_opt = 150; % (mm)
 
 
 x_dot(1) = x(2); % theta dot (angular velocity)
-x_dot(2) = (m*g*d*sin(x(1) - k1*e^(k2*x1) + torque_t + torque_e + torque_v))/(m*d^2); % angular acceleration
+
+debug10 = size(torque_t) %problem
+debug11 = size((m*g*d*sin(x(1) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v))/(m*d^2))
+
+
+x_dot(2) = (m*g*d*sin(x(1) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v))/(m*d^2); % angular acceleration
 x_dot(3) = get_velocity(x(1), x(2), l_mt)/l_opt; % normalized tibialis velocity
 x_dot(4) = c0*(-x(4) + Q1_pw*Q2_f + k3);
 % x_dot(4) = get_fes_activation(Q1_pw, Q2_f, k3); % activation derivative

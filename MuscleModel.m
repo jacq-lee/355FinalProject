@@ -26,7 +26,7 @@ classdef MuscleModel
                 obj.k2 = k2_;
                 obj.k3 = k3_;
                 obj.pw = pw_;
-                obj.pw = f_;
+                obj.f = f_;
                 obj.resting_length_muscle = resting_length_muscle_;
                 obj.resting_length_tendon = resting_length_tendon_;
             end

@@ -16,20 +16,17 @@ a2 = 2.5;
 R = 15;
 f_cf = 50; % critical fusion frequency, in Hertz
 
-for
-
-    if pw < pw_thr
-        Q1_pw = 0;
-    else if pw_thr <= pw || pw <= pw_sat
-        Q1_pw = (pw - pw_thr)/(pw_sat - pw_thr);
-    else
-        Q1_pw = 1;
-
+if pw < pw_thr
+    Q1_pw = 0;
+else if pw_thr <= pw || pw <= pw_sat
+    Q1_pw = (pw - pw_thr)/(pw_sat - pw_thr);
+else
+    Q1_pw = 1;
 end
 
-f0 = R*ln( (a2-1)*e^(f_cf/R) - a2 );
+f0 = R*log( (a2-1)*exp(f_cf/R) - a2 );
 
-Q2_f = ( (a1 - a2)/(1 + e^((f - f0)/R)) ) + a2;
+Q2_f = ( (a1 - a2)/(1 + exp((f - f0)/R)) ) + a2;
 
 
 end
