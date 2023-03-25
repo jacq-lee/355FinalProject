@@ -1,24 +1,27 @@
-function [] = simulate(T)
+function [] = simulate(T, muscle_model)
 % Runs a simulation of the model and plots results.
 
 % Inputs
 % T: total time to simulate, in seconds
+% muscle_model: The MuscleModel object
 
-% MDM: Assume the rest length of the tibialis is when the person is
-% standing (pi/2)
+% assume tibialis rest length is when the person is standing (pi/2)
 rest_length_tibialis = tibialis_length(pi/2); 
 
 % MDM: Do we need something like the line below???
 % tibialis = HillTypeMuscle(2000, 0.6*rest_length_tibialis, 0.4*rest_length_tibialis);
 
 
-f = @(t, x) dynamics(x);
+f = @(t, x) dynamics(x, muscle_model);
 tspan = [0 T];
 
 % MDM: Figure out initial conditions for states
 % [ ankle angle, angular velocity, TA normalized length, activation ] 
 
-initialCondition = [pi/2, 0, 1, 1];
+x1_initial = 1.876;
+norm_ta_initial = (tibialis_length(x1_initial))/150; % divided by 150 as this is lopt
+
+initialCondition = [x1_initial, 0, norm_ta_initial, 0];
 
 options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
 [time, state] = ode45(f, tspan, initialCondition, options);

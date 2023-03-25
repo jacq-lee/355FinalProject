@@ -1,0 +1,23 @@
+Simulation 1
+% small pw (50 microseconds) vs large pw (110 microseconds)
+% frequency - 25 Hz
+% no fatigue
+
+clear
+clc
+
+simulation_1 = MuscleModel(100,0.25,3,0,12,50,25);
+T = 10; % can be changed
+simulate(T);
+
+%% Simulation 2
+% large pw (110 microseconds)
+% frequency - 25 Hz
+% no fatigue
+clc
+
+simulation_2 = MuscleModel(100,0.25,3,0,12,110,25);
+T = 10; % can be changed
+simulate(T);
+
+%% Simulation 3
