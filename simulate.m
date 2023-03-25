@@ -27,7 +27,7 @@ options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
 [time, state] = ode45(f, tspan, initialCondition, options);
 
 
-ankle_angle = rad2deg(state(:,1));
+ankle_angle = (state(:,1));
 angular_velocity = state(:,2);
 TA_normalized_length = state(:,3);
 activation = state(:,4); 

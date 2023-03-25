@@ -38,7 +38,7 @@ f = muscle_model.f;
 [torque_t, torque_e, torque_v] = get_torque(x, muscle_model);
 
 l_mt = tibialis_length(x(1));
-l_opt = 150; % (mm)
+l_opt = 0.15; % (m)
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)
