@@ -20,7 +20,7 @@ k3 = 12;
 % norm_tendon = rest_length_tibialis - (0.6*rest_length_tibialis*x3)
 
 %L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized)
-%l_mt = tibialis_length;  
+%l_mt = tibialis_length(x(1));  
 
 % normalized lm is x3
 % x(3) = (tibialis_length(x(1)) - (0.4*rest_length_tibialis*norm_tendon))/(0.6*rest_length_tibialis)
