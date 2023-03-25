@@ -1,4 +1,4 @@
-function [x_dot] = dynamics(x)
+function [x_dot] = dynamics(x, muscle_model)
 
 % Inputs
 %  x: state vector (ankle angle, angular velocity, TA normalized length, activation)
@@ -12,9 +12,16 @@ d = 0.25; % MDM: Selected Subject 1 for now (m)
 g = 9.81; % JL: double check
 
 % MDM: Unfatigued K values eye-balled from chart
-k1 = 3;
-k2 = 0;
-k3 = 12; 
+% k1 = 3;
+% k2 = 0;
+% k3 = 12; 
+
+k1 = muscle_model.k1;
+k2 = muscle_model.k2;
+k3 = muscle_model.k3;
+
+pw = muscle_model.pw;
+f = muscle_model.f;
 
 % rest_length_tibialis = tibialis_length*(pi/2);
 % norm_tendon = rest_length_tibialis - (0.6*rest_length_tibialis*x3)
