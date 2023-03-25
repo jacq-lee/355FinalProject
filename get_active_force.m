@@ -1,24 +1,27 @@
-function [f_bar_ce] = get_active_force(x_3, V_m_bar)
+function [f_ce] = get_active_force(x3, v_m)
 
 % Inputs
 % x_3: normalized muscle length
 % V_m_bar: normalized velocity of muscle
 
-F_bar = 30; %Normalized static force that is actually not really normalized?
-
-q_sf = %unknown value, Activiation signal 
-
-%Relationship between force and length (eq 9)
-F_tilda_Fl_l_m = exp(-40*(x_3 -0.95)^4 + (x_3 -0.95)^2);
-
-%Relationship between muscle output force and speed (eq 10) 
-F_tilda_Fv_V_m = 0.54*atan(5.69*V_m_bar + 0.51) + 0.745;
-
-
-
 % Output
 % f_bar_ce: active force generated
 
-f_bar_ce = F_bar*q_sf*F_tilda_Fl_l_m*F_tilda_Fv_V_m;
+
+F_bar = 30; % EB: Normalized static force that is actually not really normalized?
+
+v_max = 2.5; % (m/s)
+vm_norm = v_m / v_max;
+
+
+q_sf = % EB: unknown value, Activiation signal 
+
+% Relationship between force and length (eq 9) - Normalized muscle force length
+f_Fl = exp(-40*(x3 -0.95)^4 + (x3 -0.95)^2);
+
+% Relationship between muscle output force and speed (eq 10) - Normalized muscle force speed factor
+f_Fv = 0.54*atan(5.69*vm_norm + 0.51) + 0.745;
+
+f_ce = F_bar*q_sf*f_Fl*f_Fv;
 
 end

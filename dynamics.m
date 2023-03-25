@@ -24,6 +24,8 @@ k3 = 12;
 % normalized lm is x3
 % x(3) = (tibialis_length(x(1)) - (0.4*rest_length_tibialis*norm_tendon))/(0.6*rest_length_tibialis)
 
+[torque_t, torque_e, torque_v] = get_torque(x);
+
 l_mt = tibialis_length(x(1));
 l_opt = 150; % (mm)
 
@@ -33,6 +35,7 @@ l_opt = 150; % (mm)
 x_dot(1) = x(2); % theta dot (angular velocity)
 x_dot(2) = (m*g*d*sin(x(1) - k1*e^(k2*x1) + torque_t + torque_e + torque_v))/(m*d^2); % angular acceleration
 x_dot(3) = get_velocity(x(1), x(2), l_mt)/l_opt; % normalized tibialis velocity
-x_dot(4) = get_fes_activation(Q1_pw, Q2_f, k3, x(4)); % activation derivative
+x_dot(4) = c0*(-x(4) + Q1_pw*Q2_f + k3);
+% x_dot(4) = get_fes_activation(Q1_pw, Q2_f, k3); % activation derivative
 
 end

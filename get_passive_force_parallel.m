@@ -1,7 +1,7 @@
 function [f_pe] = get_passive_force_parallel(x3)
 
 % Inputs
-% Lm: normalized length of muscle (contractile element)
+% x3: Lm, normalized length of muscle (contractile element)
 
 f_peak_iso = 1.3;
 l_pe = 0.9;

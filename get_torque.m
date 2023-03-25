@@ -1,4 +1,4 @@
-function [torque_t, torque_v, torque_e] = get_torque(x1)
+function [torque_t, torque_v, torque_e] = get_torque(x)
 
 % Inputs
 % x1: theta, the ankle joint angle
@@ -6,7 +6,7 @@ function [torque_t, torque_v, torque_e] = get_torque(x1)
 
 % Output
 % torque_t: active torque from electrical stimulation
-% torque_v: passive torque from muscleps viscous force
+% torque_v: passive torque from muscles viscous force
 % torque_e: passive torque from elastic force
 
 
@@ -20,13 +20,21 @@ K = -1;
 d = 0.1;
 n = 0.099;
 
-f_t = f_ce + f_see + f_pe; % JL: + f_bar?, need to replace with get_force functions
+lt; % JL: Need
+
+gamma_ma = get_force_arm(x(1));
+v_m = get_velocity(x(1), x(2));
+
+% f_t = f_ce + f_see + f_pe
+f_t = get_active_force(x(3), v_m) + get_passive_force_series(lt) + get_passive_force_parallel(x(3));
+
 
 torque_t = gamma_ma*f_t; 
 
-torque_e = e^(a_1k + b_1k*x1) - e^(a_2k + b_2k*x1) + c;
+% torque_v = K*sign(q_dot)*(d*abs(q_dot))^n;
+torque_v = 0; % JL: Figure out if time permits
 
-torque_v = K*sign(q_dot)*(d*abs(q_dot))^n;
+torque_e = e^(a_1k + b_1k*x(1)) - e^(a_2k + b_2k*x(1)) + c;
 
 
 end
