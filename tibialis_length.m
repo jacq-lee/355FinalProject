@@ -16,6 +16,6 @@ insertion = [0.06, -0.03]';
 
 difference = origin - insertion;
 tibialis_anterior_length = sqrt(difference(1)^2 + difference(2)^2);
-   
+
 
 end
