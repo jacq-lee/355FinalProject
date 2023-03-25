@@ -9,12 +9,13 @@ function [v_m] = get_velocity(x1, x2)
 % v_m: tibialis anterior muscle contraction velocity (not normalized)
 
 alpha_P = 9.6; % pennation angle for the TA (feathering angle) (degrees)
+l_mt = tibialis_length(x1)
 
-l_mt = tibialis_length(x1);
+
 step_size = 0.001;
 
-l_deriv = diff(l_mt)/step_size; % derivative of muscle tendon unit wrt x1
+syms symbolic_x1
 
-v_m = x2*l_deriv*(1/cos(alpha_P)); % ta contraction velocity
-
+l_deriv = inline(diff(tibialis_length(symbolic_x1)))
+v_m = x2*l_deriv(x1)*(1/cos(alpha_P)); % ta contraction velocity
 end

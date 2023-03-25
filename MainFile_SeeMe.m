@@ -9,7 +9,7 @@ resting_length_muscle = tibialis_length(pi/2)*0.6;
 resting_length_tendon = tibialis_length(pi/2)*0.4;
 
 simulation_1 = MuscleModel(100,0.25,3,0,12,50,25, resting_length_muscle, resting_length_tendon);
-T = 10; % can be changed
+T = 1; % can be changed
 simulate(T, simulation_1);
 
 %% Simulation 2

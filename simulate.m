@@ -27,38 +27,18 @@ options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
 [time, state] = ode45(f, tspan, initialCondition, options);
 
 
-angle_angle = y(:,1);
-angular_velocity = y(:,2);
-TA_normalized_length = y(:,3);
-activation = y(:,4); 
+ankle_angle = rad2deg(state(:,1));
+angular_velocity = state(:,2);
+TA_normalized_length = state(:,3);
+activation = state(:,4); 
 
-% MDM: INTERESTING, here they calculate stuff based off of the states, is
-% this something we should consider doing in our "simulations"?? is this
-% what he meant when he said "what will you simulate?? 
-
-% soleus_moment_arm = 0.05;
-% tibialis_moment_arm = 0.03;
-% soleus_moment = zeros(size(y,1),1);
-% tibialis_moment = zeros(size(y,1),1);
-% for i = 1:size(y,1)
-%     soleus_moment(i) = soleus_moment_arm * soleus.get_force(soleus_length(theta(i)), soleus_norm_length_muscle(i));
-%     tibialis_moment(i) = -tibialis_moment_arm * tibialis.get_force(tibialis_length(theta(i)), tibialis_norm_length_muscle(i));
-% end
-
+%%% Plotting
 figure()
 LineWidth = 1.5;
-subplot(2,1,1)
-plot(time, theta, 'LineWidth', LineWidth)
-ylabel('Ankle Angle (rad)')
-
-% 
-% subplot(2,1,2)
-% plot(time, soleus_moment, 'r', 'LineWidth', LineWidth), hold on
-% plot(time, tibialis_moment, 'g', 'LineWidth', LineWidth)
-% plot(time, gravity_moment(theta), 'k', 'LineWidth', LineWidth), hold off
-% legend('Soleus', 'Tibialis', 'Gravity', 'Location','northwest')
-% xlabel('Time (s)')
-% ylabel('Torques (Nm)')
-% set(gca,'FontSize',12)
+% Your plotting code should be here
+plot(time, ankle_angle, 'r', 'LineWidth', LineWidth), hold on
+plot(time, angular_velocity, 'g','LineWidth', LineWidth)
+plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
+plot(time, activation, 'k', 'LineWidth', LineWidth), hold off
 
 end
