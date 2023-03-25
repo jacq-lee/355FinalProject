@@ -8,7 +8,7 @@ function [v_m] = get_velocity(x1, x2)
 % Output
 % v_m: tibialis anterior muscle contraction velocity (not normalized)
 
-alpha_P = 9.6; % pennation angle for the TA (feathering angle) (degrees)
+alpha_P = deg2rad(9.6); % pennation angle for the TA (feathering angle) (degrees)
 l_mt = tibialis_length(x1)
 
 
