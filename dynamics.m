@@ -30,7 +30,6 @@ pw = muscle_model.pw;
 f = muscle_model.f;
 
 % rest_length_tibialis = tibialis_length*(pi/2);
-% norm_tendon = rest_length_tibialis - (0.6*rest_length_tibialis*x3)
 
 %L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized) 
 

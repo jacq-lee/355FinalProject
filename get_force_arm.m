@@ -6,6 +6,6 @@ function [gamma_ma] = get_force_arm(x1)
 % Output
 % gamma_ma: force arm
 
-gamma_ma = -0.0069.*x1.^2 + 0.769.*x1 - 1.3602; % may have to be adjusted slightly for vector vs scalar?
+gamma_ma = -0.0069.*x1.^2 + 0.769.*x1 - 1.3602;
 
 end
