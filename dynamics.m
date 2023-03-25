@@ -11,9 +11,10 @@ m = 0; % JL: add
 d = 0; % JL: add
 g = 9.81; % JL: double check
 
-k1 = 0; % JL: add
-k2 = 0; % JL: add
-k3 = 0; % JL: add
+% MDM: Unfatigued K values eye-balled from chart
+k1 = 3;
+k2 = 0;
+k3 = 12; 
 
 
 %l_mt = tibialis_length;  %L(theta) = [origin - insertion] = lm + lt (non-normalized)
