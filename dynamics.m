@@ -19,20 +19,20 @@ k3 = 12;
 % rest_length_tibialis = tibialis_length*(pi/2);
 % norm_tendon = rest_length_tibialis - (0.6*rest_length_tibialis*x3)
 
-%L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized)
-%l_mt = tibialis_length(x(1));  
+%L(theta) = l_mt = [origin - insertion] = lm + lt (non-normalized) 
 
 % normalized lm is x3
 % x(3) = (tibialis_length(x(1)) - (0.4*rest_length_tibialis*norm_tendon))/(0.6*rest_length_tibialis)
 
-l_mt = 
+l_mt = tibialis_length(x(1));
+l_opt = 150; % (mm)
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 
 
 x_dot(1) = x(2); % theta dot (angular velocity)
 x_dot(2) = (m*g*d*sin(x(1) - k1*e^(k2*x1) + torque_t + torque_e + torque_v))/(m*d^2); % angular acceleration
-x_dot(3) = get_velocity(x(1), x(2), l_mt); % normalized tibialis velocity
+x_dot(3) = get_velocity(x(1), x(2), l_mt)/l_opt; % normalized tibialis velocity
 x_dot(4) = get_fes_activation(Q1_pw, Q2_f, k3, x(4)); % activation derivative
 
 end
