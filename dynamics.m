@@ -7,9 +7,15 @@ function [x_dot] = dynamics(x, muscle_model)
 % x_dot: derivative of state vector
 
 x_dot = zeros(size(x)); % initialize x_dot
-m = 52; % MDM: Selected Subject 1 for now (kg)
-d = 0.25; % MDM: Selected Subject 1 for now (m)
-g = 9.81; % JL: double check
+% m = 52; % MDM: Selected Subject 1 for now (kg)
+% d = 0.25; % MDM: Selected Subject 1 for now (m)
+
+m = muscle_model.mass;
+d = muscle_model.d;
+
+g = 9.81;
+
+
 
 % MDM: Unfatigued K values eye-balled from chart
 % k1 = 3;
@@ -31,7 +37,7 @@ f = muscle_model.f;
 % normalized lm is x3
 % x(3) = (tibialis_length(x(1)) - (0.4*rest_length_tibialis*norm_tendon))/(0.6*rest_length_tibialis)
 
-[torque_t, torque_e, torque_v] = get_torque(x);
+[torque_t, torque_e, torque_v] = get_torque(x, muscle_model);
 
 l_mt = tibialis_length(x(1));
 l_opt = 150; % (mm)

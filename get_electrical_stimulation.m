@@ -4,7 +4,7 @@ function [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f)
 % pw: pulse width (microseconds)
 % f: electrical stimulation frequency (Hz)
 
-% Output
+% Outputs
 % Q1_pw: electrical stimulation intensity
 % Q2_f: electrical stimulation frequency 
 

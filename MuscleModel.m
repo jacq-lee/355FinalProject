@@ -6,25 +6,29 @@ classdef MuscleModel
     
     properties
         mass  {mustBeNumeric}
-        d  {mustBeNumeric}
+        distance  {mustBeNumeric} % distance between ankle and centroid of the foot
         k1  {mustBeNumeric}
         k2  {mustBeNumeric}
         k3  {mustBeNumeric}
-        pw {mustBeNumeric}
-        f {mustBeNumeric}
+        pw  {mustBeNumeric}
+        f  {mustBeNumeric}
+        resting_length_muscle  {mustBeNumeric} % 0.6*resting_length_tibialis
+        resting_length_tendon  {mustBeNumeric} % 0.4*resting_length_tibialis
     end
     
     methods
         
-        function obj = MuscleModel(mass_, d_, k1_, k2_, k3_, pw_, f_)
-            if nargin == 7
+        function obj = MuscleModel(mass_, distance_, k1_, k2_, k3_, pw_, f_, resting_length_muscle_, resting_length_tendon_)
+            if nargin == 9
                 obj.mass = mass_;
-                obj.d = d_;
+                obj.distance = distance_;
                 obj.k1 = k1_;
                 obj.k2 = k2_;
                 obj.k3 = k3_;
                 obj.pw = pw_;
                 obj.pw = f_;
+                obj.resting_length_muscle = resting_length_muscle_;
+                obj.resting_length_tendon = resting_length_tendon_;
             end
         end
         
