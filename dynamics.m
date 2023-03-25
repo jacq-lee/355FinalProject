@@ -7,8 +7,8 @@ function [x_dot] = dynamics(x)
 % x_dot: derivative of state vector
 
 x_dot = zeros(size(x)); % initialize x_dot
-m = 0; % JL: add
-d = 0; % JL: add
+m = 52; % MDM: Selected Subject 1 for now (kg)
+d = 0.25; % MDM: Selected Subject 1 for now (m)
 g = 9.81; % JL: double check
 
 % MDM: Unfatigued K values eye-balled from chart

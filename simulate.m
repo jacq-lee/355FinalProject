@@ -4,27 +4,35 @@ function [] = simulate(T)
 % Inputs
 % T: total time to simulate, in seconds
 
-% rest_length_tibialis = tibialis_length(pi/2);
+% MDM: Assume the rest length of the tibialis is when the person is
+% standing (pi/2)
+rest_length_tibialis = tibialis_length(pi/2); 
 
-% MDM: Do we need something like the line below?
+% MDM: Do we need something like the line below???
 % tibialis = HillTypeMuscle(2000, 0.6*rest_length_tibialis, 0.4*rest_length_tibialis);
 
 
-f = @(t, x) dynamics(x, soleus, tibialis);
+f = @(t, x) dynamics(x);
 tspan = [0 T];
 
 % MDM: Figure out initial conditions for states
 % [ ankle angle, angular velocity, TA normalized length, activation ] 
-% initialCondition = [pi/2, 0, 1, 1];
 
-% options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
-% [time, y] = ode45(f, tspan, initialCondition, options);
+initialCondition = [pi/2, 0, 1, 1];
 
-% 
-% theta = y(:,1);
-% soleus_norm_length_muscle = y(:,3);
-% tibialis_norm_length_muscle = y(:,4);
-% 
+options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
+[time, state] = ode45(f, tspan, initialCondition, options);
+
+
+angle_angle = y(:,1);
+angular_velocity = y(:,2);
+TA_normalized_length = y(:,3);
+activation = y(:,4); 
+
+% MDM: INTERESTING, here they calculate stuff based off of the states, is
+% this something we should consider doing in our "simulations"?? is this
+% what he meant when he said "what will you simulate?? 
+
 % soleus_moment_arm = 0.05;
 % tibialis_moment_arm = 0.03;
 % soleus_moment = zeros(size(y,1),1);
@@ -33,12 +41,13 @@ tspan = [0 T];
 %     soleus_moment(i) = soleus_moment_arm * soleus.get_force(soleus_length(theta(i)), soleus_norm_length_muscle(i));
 %     tibialis_moment(i) = -tibialis_moment_arm * tibialis.get_force(tibialis_length(theta(i)), tibialis_norm_length_muscle(i));
 % end
-% 
-% figure()
-% LineWidth = 1.5;
-% subplot(2,1,1)
-% plot(time, theta, 'LineWidth', LineWidth)
-% ylabel('Body Angle (rad)')
+
+figure()
+LineWidth = 1.5;
+subplot(2,1,1)
+plot(time, theta, 'LineWidth', LineWidth)
+ylabel('Ankle Angle (rad)')
+
 % 
 % subplot(2,1,2)
 % plot(time, soleus_moment, 'r', 'LineWidth', LineWidth), hold on
@@ -48,4 +57,5 @@ tspan = [0 T];
 % xlabel('Time (s)')
 % ylabel('Torques (Nm)')
 % set(gca,'FontSize',12)
+
 end
