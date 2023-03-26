@@ -4,7 +4,7 @@ function [tibialis_anterior_length] = tibialis_length(x1)
 % x1 (theta): body angle (up from prone horizontal)
 
 % Output
-% tibialis anterior length
+% tibialis anterior length (m)
 
 % define rotation matrix
 rotation = [cos(x1) -sin(x1) 

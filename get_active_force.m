@@ -1,15 +1,17 @@
-function [f_ce] = get_active_force(x3, v_m, x4)
+function [f_ce] = get_active_force(x3, x4, v_m)
 
 % Inputs
 % x3: normalized muscle length
-% v_m: normalized velocity of muscle
 % x4: activation of electrical stimulation
+% v_m: normalized velocity of muscle (x3 dot)
 
 % Output
 % f_bar_ce: normalized active force generated
 
-F_bar = 30; % normalized static force
-q_sf = x4;  % Activiation signal q(s,f) - assumed to be equal to x4
+
+F_bar = 30; % Normalized static force
+
+q_sf = x4; % Activation signal q(s,f) -- Assumed to be equal to x4 
 
 % Relationship between force and length (eq 9) - Normalized muscle force length
 f_Fl = exp(-40*(x3 -0.95)^4 + (x3 -0.95)^2);
