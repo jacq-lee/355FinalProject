@@ -10,7 +10,6 @@ x_dot = zeros(size(x)); % Initialize x_dot
 
 m = muscle_model.foot_mass;
 d = muscle_model.distance;
-
 g = 9.81;
 
 k1 = muscle_model.k1;
@@ -21,7 +20,6 @@ pw = muscle_model.pw;
 f = muscle_model.f;
 
 [torque_t, torque_e, torque_v] = get_torque(x, muscle_model);
-
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)
