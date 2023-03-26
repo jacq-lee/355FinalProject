@@ -28,9 +28,9 @@ gamma_ma = get_force_arm(x(1));
 v_m = get_velocity(x(1), x(2));
 
 % f_t = f_ce + f_see + f_pe
-debug_getactive = get_active_force(x(3), v_m, x(4))
-debug_getseries = get_passive_force_series(lt_norm)
-debug_getparallel = get_passive_force_parallel(x(3))
+% debug_getactive = get_active_force(x(3), v_m, x(4))
+% debug_getseries = get_passive_force_series(lt_norm)
+% debug_getparallel = get_passive_force_parallel(x(3))
 f_t = get_active_force(x(3), v_m, x(4)) + get_passive_force_series(lt_norm) + get_passive_force_parallel(x(3));
 
 torque_t = gamma_ma*f_t; 

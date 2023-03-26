@@ -10,10 +10,10 @@ classdef MuscleModel
         k1  {mustBeNumeric}
         k2  {mustBeNumeric}
         k3  {mustBeNumeric}
-        pw  {mustBeNumeric}
-        f  {mustBeNumeric}
-        resting_length_muscle  {mustBeNumeric} % 0.6*resting_length_tibialis
-        resting_length_tendon  {mustBeNumeric} % 0.4*resting_length_tibialis
+        pw  {mustBeNumeric} % (seconds)
+        f  {mustBeNumeric} % (Hz)
+        resting_length_muscle  {mustBeNumeric} % (normalized), 0.6*resting_length_tibialis 
+        resting_length_tendon  {mustBeNumeric} % (normalized), 0.4*resting_length_tibialis
     end
     
     methods

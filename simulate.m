@@ -18,12 +18,13 @@ tspan = [0 T];
 % MDM: Figure out initial conditions for states
 % [ ankle angle, angular velocity, TA normalized length, activation ] 
 
-x1_initial = 1.876;
-norm_ta_initial = (tibialis_length(x1_initial))/150; % divided by 150 as this is lopt
+x1_initial = 1.876; % (radians)
+norm_ta_initial = (tibialis_length(x1_initial))/0.150; % divided by 0.150 m as this is lopt
+disp(norm_ta_initial)
 
 initialCondition = [x1_initial, 0, norm_ta_initial, 0];
 
-options = odeset('RelTol', 1e-6, 'AbsTol', 1e-8);
+options = odeset('RelTol', 1e-3, 'AbsTol', 1e-8);
 [time, state] = ode45(f, tspan, initialCondition, options);
 
 
@@ -40,5 +41,10 @@ plot(time, ankle_angle, 'r', 'LineWidth', LineWidth), hold on
 plot(time, angular_velocity, 'g','LineWidth', LineWidth)
 plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
 plot(time, activation, 'k', 'LineWidth', LineWidth), hold off
+
+legend('Ankle Angle', 'Angular Velocity', 'Normalized TA Length', 'FEA Activaton');
+
+figure()
+plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
 
 end

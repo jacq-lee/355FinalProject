@@ -45,9 +45,12 @@ c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)
 
 x_dot(1) = x(2); % theta dot (angular velocity)
 
-x_dot(4) = c0*(-x(4) + Q1_pw*Q2_f + k3);
-x_dot(3) = get_velocity(x(1), x(2))/l_opt; % normalized tibialis velocity
-
 x_dot(2) = (m*g*d*sin(x(1) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v))/(m*d^2); % angular acceleration
+
+% x_dot(3) = get_velocity(x(1), x(2))/l_opt; % normalized tibialis velocity
+x_dot(3) = get_velocity(x(1), x(2)); % normalized tibialis velocity
+
+x_dot(4) = c0*(-x(4) + Q1_pw*Q2_f + k3);
+
 
 end
