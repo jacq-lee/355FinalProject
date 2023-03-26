@@ -1,7 +1,7 @@
 function [x_dot] = dynamics(x, muscle_model)
 
 % Inputs
-% x: state vector (ankle angle, angular velocity, TA normalized length, activation)
+% x: state vector (ankle angle, angular velocity, TA normalized muscle length, activation)
 
 % Output
 % x_dot: derivative of state vector
@@ -21,6 +21,7 @@ pw = muscle_model.pw;
 f = muscle_model.f;
 
 [torque_t, torque_e, torque_v] = get_torque(x, muscle_model);
+
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)

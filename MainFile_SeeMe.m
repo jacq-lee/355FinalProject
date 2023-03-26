@@ -12,7 +12,7 @@ resting_length_tendon = tibialis_length(pi/2)*0.4;
 
 T = 0.41; % Swing portion of gate cycle (s), taken from research
 
-simulation_1 = MuscleModel(52,0.0137,0.25,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
+simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
 simulate(T, simulation_1);
 
 %% Simulation 2

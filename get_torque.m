@@ -33,10 +33,10 @@ v_m = get_velocity(x(1), x(2));
 % f_t = f_ce + f_see + f_pe
 f_t = get_active_force(x(3), v_m, x(4)) + get_passive_force_series(lt_norm) + get_passive_force_parallel(x(3));
 
+
 torque_t = gamma_ma*f_t; 
 
-% torque_v = K*sign(q_dot)*(d*abs(q_dot))^n; -- not currently implemented
-torque_v = 0;
+torque_v = 0; % torque_v = K*sign(q_dot)*(d*abs(q_dot))^n; -- Not currently implemented
 
 torque_e = exp(a_1k + b_1k*x(1)) - exp(a_2k + b_2k*x(1)) + c;
 
