@@ -5,7 +5,7 @@ classdef MuscleModel
     % length, and SE length.
     
     properties
-        mass  {mustBeNumeric}
+        mass  {mustBeNumeric} % (kg)
         foot_mass_ratio  {mustBeNumeric} % 1.37% for males, 1.29% for females
         foot_mass {mustBeNumeric}
         distance  {mustBeNumeric} % distance between ankle and centroid of the foot

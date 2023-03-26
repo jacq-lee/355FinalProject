@@ -2,31 +2,23 @@ function [] = simulate(T, muscle_model)
 % Runs a simulation of the model and plots results.
 
 % Inputs
-% T: total time to simulate, in seconds
-% muscle_model: The MuscleModel object
+% T: total time to simulate (seconds)
+% muscle_model: The MuscleModel object (inform the simulation parameters)
 
-% assume tibialis rest length is when the person is standing (pi/2)
-rest_length_tibialis = tibialis_length(pi/2); 
+% TA length at 110 degrees (optimal length for force generation)
+l_opt = tibialis_length(1.919862177); 
 
-% MDM: Do we need something like the line below???
-% tibialis = HillTypeMuscle(2000, 0.6*rest_length_tibialis, 0.4*rest_length_tibialis);
+% Finding initial conditions
+x1_initial = 1.876; % Value obtained from literature (radians)
+norm_ta_initial = (tibialis_length(x1_initial))/l_opt;
 
+initialCondition = [x1_initial, 0, norm_ta_initial, 0]; % (angle, angular velocity, norm TA length, activation)
 
 f = @(t, x) dynamics(x, muscle_model);
 tspan = [0 T];
 
-% MDM: Figure out initial conditions for states
-% [ ankle angle, angular velocity, TA normalized length, activation ] 
-
-lopt = tibialis_length(1.919862177) % TA length at 110 degrees (optimal length for force generation)
-x1_initial = 1.876; % (radians)
-norm_ta_initial = (tibialis_length(x1_initial))/lopt;
-
-initialCondition = [x1_initial, 0, norm_ta_initial, 0];
-
 options = odeset('RelTol', 1e-3, 'AbsTol', 1e-8);
 [time, state] = ode45(f, tspan, initialCondition, options);
-
 
 ankle_angle = (state(:,1));
 angular_velocity = state(:,2);
@@ -36,15 +28,42 @@ activation = state(:,4);
 %%% Plotting
 figure()
 LineWidth = 1.5;
-% Your plotting code should be here
+
+% All states, Radians, Normalized Length
 plot(time, ankle_angle, 'r', 'LineWidth', LineWidth), hold on
 plot(time, angular_velocity, 'g','LineWidth', LineWidth)
 plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
 plot(time, activation, 'k', 'LineWidth', LineWidth), hold off
 
-legend('Ankle Angle', 'Angular Velocity', 'Normalized TA Length', 'FEA Activaton');
+title('States over Time')
+xlabel('Time (s)')
+legend('Ankle Angle', 'Angular Velocity', 'Normalized TA Length', 'FEA Activaton')
 
+% All states, Degrees, Length (cm)
+% plot(time, ankle_angle.*(180/pi), 'r', 'LineWidth', LineWidth), hold on
+% plot(time, angular_velocity.*(180/pi), 'g','LineWidth', LineWidth)
+% plot(time, TA_normalized_length.*34.91, 'b', 'LineWidth',LineWidth)
+% plot(time, activation, 'k', 'LineWidth', LineWidth), hold off
+% 
+% title('States over Time')
+% xlabel('Time (s)')
+% legend('Ankle Angle', 'Angular Velocity', 'Normalized TA Length', 'FEA Activaton')
+
+% Ankle Angle and Angular Velocity (x1, x2), Radians
+figure()
+plot(time, ankle_angle, 'r', 'LineWidth', LineWidth), hold on
+plot(time, angular_velocity, 'g','LineWidth', LineWidth), hold off
+title('Ankle Angle and Velocity over Time')
+xlabel('Time (s)')
+ylabel('Angle (Radians)')
+legend('Ankle Angle (x1)', 'Angular Velocity (x2)')
+
+% TA Length (x3)
 figure()
 plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
+title('TA Length over Time')
+xlabel('Time (s)')
+ylabel('TA Length (Normalized)')
+legend('TA Length (x3)')
 
 end
