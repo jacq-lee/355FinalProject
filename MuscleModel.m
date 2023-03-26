@@ -45,7 +45,7 @@ classdef MuscleModel
             
             % Output
             % normalized length of the tendon
-            
+
             normalized_tendon_length = ...
                 (muscle_tendon_length - obj.resting_length_muscle * normalized_muscle_length) / obj.resting_length_tendon;
         end

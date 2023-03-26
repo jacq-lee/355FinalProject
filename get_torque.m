@@ -11,7 +11,7 @@ function [torque_t, torque_v, torque_e] = get_torque(x, muscle_model)
 % torque_e: passive torque from elastic force
 
 
-% Passive torque parameters, obtained from paper
+% Passive torque parameters, obtained from paper (What units are these?)
 a_1k = 2.1016;
 b_1k = -0.0843;
 a_2k = -7.9763;
