@@ -9,7 +9,7 @@ function [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f)
 % Q2_f: electrical stimulation frequency 
 
 pw_thr = 0; % pulse width at the beginning of ankle dorsiflexion
-pw_sat = 110; % pulse width at the maximum angle (pw_sat > pw_thr)
+pw_sat = 110e-6; % pulse width at the maximum angle (pw_sat > pw_thr)
 
 a1 = 0.8323; 
 a2 = 2.5; 
