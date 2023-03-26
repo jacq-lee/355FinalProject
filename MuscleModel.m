@@ -6,21 +6,26 @@ classdef MuscleModel
     
     properties
         mass  {mustBeNumeric}
+        foot_mass_ratio  {mustBeNumeric} % 1.37% for males, 1.29% for females
+        foot_mass {mustBeNumeric}
         distance  {mustBeNumeric} % distance between ankle and centroid of the foot
         k1  {mustBeNumeric}
         k2  {mustBeNumeric}
         k3  {mustBeNumeric}
         pw  {mustBeNumeric} % (seconds)
         f  {mustBeNumeric} % (Hz)
-        resting_length_muscle  {mustBeNumeric} % (normalized), 0.6*resting_length_tibialis 
-        resting_length_tendon  {mustBeNumeric} % (normalized), 0.4*resting_length_tibialis
+        resting_length_muscle  {mustBeNumeric} % 0.6*resting_length_tibialis (m)
+        resting_length_tendon  {mustBeNumeric} % 0.4*resting_length_tibialis (m)
     end
     
     methods
         
-        function obj = MuscleModel(mass_, distance_, k1_, k2_, k3_, pw_, f_, resting_length_muscle_, resting_length_tendon_)
-            if nargin == 9
+        function obj = MuscleModel(mass_, foot_mass_ratio_, distance_, ...
+                k1_, k2_, k3_, pw_, f_, resting_length_muscle_, resting_length_tendon_)
+            if nargin == 10
                 obj.mass = mass_;
+                obj.foot_mass_ratio = foot_mass_ratio_;
+                obj.foot_mass = mass_*foot_mass_ratio_;
                 obj.distance = distance_;
                 obj.k1 = k1_;
                 obj.k2 = k2_;
@@ -45,9 +50,10 @@ classdef MuscleModel
             
             % Output
             % normalized length of the tendon
-            
+
             normalized_tendon_length = ...
                 (muscle_tendon_length - obj.resting_length_muscle * normalized_muscle_length) / obj.resting_length_tendon;
+            
         end
         
     end

@@ -18,9 +18,9 @@ tspan = [0 T];
 % MDM: Figure out initial conditions for states
 % [ ankle angle, angular velocity, TA normalized length, activation ] 
 
-lopt = tibialis_length(1.919862177) % TA length at 110 degrees (optimal length for force generation)
+lopt = tibialis_length(1.919862177); % TA length at 110 degrees (optimal leng
 x1_initial = 1.876; % (radians)
-norm_ta_initial = (tibialis_length(x1_initial))/lopt;
+norm_ta_initial = (tibialis_length(x1_initial))/lopt; % divided by 0.150 m as this is lopt
 
 initialCondition = [x1_initial, 0, norm_ta_initial, 0];
 

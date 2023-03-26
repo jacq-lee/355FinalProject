@@ -21,8 +21,9 @@ syms symbolic_x1
 % v_m = x2*l_deriv(x1)*(1/cos(alpha_P)); % ta contraction velocity
 
 l_deriv = inline(diff(tibialis_length(symbolic_x1)));
-v_m_not_norm = x2*l_deriv(x1)*(1/cos(alpha_P)); % non-normalized ta contraction velocity
+v_m = x2*l_deriv(x1)*(1/cos(alpha_P)); % non-normalized ta contraction velocity
+% v_m_not_norm = x2*l_deriv(x1)*(1/cos(alpha_P)); % non-normalized ta contraction velocity
 
-v_m = v_m_not_norm/v_max;
+% v_m = v_m_not_norm/v_max;
 
 end

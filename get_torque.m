@@ -25,11 +25,11 @@ n = 0.099;
 lt_norm = muscle_model.norm_tendon_length(tibialis_length(x(1)), x(3)); % normalized length of muscle tendon
 
 gamma_ma = get_force_arm(x(1));
-v_m = get_velocity(x(1), x(2));
+v_m = get_velocity(x(1), x(2))/2.5;
 
 % f_t = f_ce + f_see + f_pe
 % debug_getactive = get_active_force(x(3), v_m, x(4))
-% debug_getseries = get_passive_force_series(lt_norm)
+debug_getseries = get_passive_force_series(lt_norm)
 % debug_getparallel = get_passive_force_parallel(x(3))
 f_t = get_active_force(x(3), v_m, x(4)) + get_passive_force_series(lt_norm) + get_passive_force_parallel(x(3));
 

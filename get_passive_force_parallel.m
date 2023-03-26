@@ -16,7 +16,6 @@ f_pe = zeros(1,length(x3));
 for n = 1:1:length(x3)
    if x3(n) < l_pe
        f_pe(n) = 0;
-%        x3(n) < l_pe
    else 
        f_pe(n) = (f_peak_iso*atan((0.1*(x3(n)-l_pe)-0.22)^10));
 
