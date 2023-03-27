@@ -25,7 +25,8 @@ plot(time, activation, 'k', 'LineWidth', LineWidth), hold off
 title('States over Time')
 xlabel('Time (s)')
 grid on
-legend('Ankle Angle (rad)', 'Angular Velocity (rad/s)', 'Normalized TA Length', 'FEA Activaton')
+legend({'Ankle Angle (rad)', 'Angular Velocity (rad/s)', 'Normalized TA Length', 'FEA Activaton'},...
+    'Location','southeast')
 
 
 % Joint Angle over Time
@@ -57,7 +58,7 @@ xlabel('Ankle Joint Angle (°)')
 ylabel('Torque (N*m)')
 xlim([-10 30])
 grid on
-legend('Combined Torque', 'Active Torque', 'Passive Torque')
+legend({'Combined Torque', 'Active Torque', 'Passive Torque'},'Location','southeast')
 
 
 % Overall Torque versus Ankle Joint Angle

@@ -38,7 +38,8 @@ plot(time_b, activation_b, 'b', 'LineStyle', '-.', 'LineWidth', LineWidth-0.5), 
 title('States over Time')
 xlabel('Time (s)')
 grid on
-legend('Ankle Angle (rad)', 'Angular Velocity (rad/s)', 'Normalized TA Length', 'FEA Activaton')
+legend({'Ankle Angle (rad)','Angular Velocity (rad/s)','Normalized TA Length','FEA Activaton'},...
+    'Location','southeast')
 
 % Joint Angle over Time
 figure()
@@ -49,7 +50,7 @@ title('Joint Angle over Time (x1)')
 xlabel('Time (s)')
 ylabel('Ankle Joint Angle (°)')
 grid on
-legend(name_a, name_b)
+legend({name_a, name_b},'Location','southeast')
 
 
 % Joint Angular Velocity over Time
@@ -85,6 +86,6 @@ title('Activation over Time (x4)')
 xlabel('Time (s)')
 ylabel('Activation')
 grid on
-legend(name_a, name_b)
+legend({name_a, name_b},'Location','southeast')
 
 end
