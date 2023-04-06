@@ -43,11 +43,11 @@ assert(simulation_1.k3 == 12 || 13, "k3 value is incorrect")
 
 %% Test resting muscle length
 assert((resting_length_muscle > 0) && (resting_length_muscle < 1), ...
-    "resting_length_muscle is an unrealistic number")
+    "Muscle resting length is an unrealistic number")
 
 %% Test resting tendon length
 assert((resting_length_tendon > 0) && (resting_length_tendon < 1), ...
-    "resting_length_tendon is an unrealistic number")
+    "Tibialis resting length is an unrealistic number")
 
 %% Test state1 is a matrix
 assert(ismatrix(state1), "State vector must be a matrix")
