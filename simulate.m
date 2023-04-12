@@ -1,4 +1,4 @@
-function [time, state, torque_t, torque_e] = simulate(T, muscle_model)
+function [time, state, torque_t, torque_e] = simulate(T, muscle_model,x1_initial)
 % Runs a simulation of the model and plots results.
 
 % Inputs
@@ -10,7 +10,6 @@ function [time, state, torque_t, torque_e] = simulate(T, muscle_model)
 l_opt = 0.6*tibialis_length(1.919862177);
 
 % Finding initial conditions
-x1_initial = 1.876; % Value obtained from literature (radians)
 norm_ta_initial = (0.6*tibialis_length(x1_initial))/l_opt;
 
 initialCondition = [x1_initial, 0, norm_ta_initial, 0]; % (angle, angular velocity, norm TA muscle length, activation)
