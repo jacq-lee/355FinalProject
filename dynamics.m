@@ -19,17 +19,32 @@ k3 = muscle_model.k3;
 pw = muscle_model.pw;
 f = muscle_model.f;
 
-[torque_t, torque_e, torque_v] = get_torque(x, muscle_model);
+[torque_t, torque_v, torque_e] = get_torque(x, muscle_model);
 
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)
 
+if torque_t > 0
+    disp('Torque t needs adjustment')
+end
+
+if torque_e > 0
+    disp('Torque e needs adjustment')
+end
 
 x_dot(1) = x(2); % Theta dot (angular velocity)
 
-x_dot(2) = (m*g*d*sin(x(1) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v))/(m*d^2); % Angular acceleration
+% original
+x_dot(2) = (m*g*d*sin(x(1)) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v)/(m*d^2) % Angular acceleration
 
-x_dot(3) = get_velocity(x(1), x(2)); % Normalized tibialis velocity
+% direction corrected
+% x_dot(2) = (m*g*d*sin(x(1)) + k1*exp(k2*x(1)) - torque_t - torque_e - torque_v)/(m*d^2) % Angular acceleration
+
+% % we know works
+% x_dot(2) = (m*g*d*sin(x(1) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v))/(m*d^2); % Angular acceleration
+
+
+x_dot(3) = get_velocity(x(1), x(2)) % Normalized tibialis velocity
 
 x_dot(4) = c0*(-x(4) + Q1_pw*Q2_f + k3);
 

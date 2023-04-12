@@ -19,7 +19,7 @@ f = @(t, x) dynamics(x, muscle_model);
 tspan = [0 T];
 
 % Integrate
-options = odeset('RelTol', 1e-3, 'AbsTol', 1e-8);
+options = odeset('RelTol', 1e-3, 'AbsTol', 1e-3);
 [time, state] = ode45(f, tspan, initialCondition, options);
 
 % % Other variables to be plotted

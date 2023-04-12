@@ -15,7 +15,9 @@ T = 0.41;
 
 simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
 [t1, state1, t_t1, t_e1] = simulate(T, simulation_1);
+
 %%
+close all
 plot_results(t1, state1, t_t1, t_e1);
 
 %% Simulation 2 - High pw
