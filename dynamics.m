@@ -24,17 +24,9 @@ f = muscle_model.f;
 [Q1_pw, Q2_f] = get_electrical_stimulation(pw, f);
 c0 = 13.2; % value from literature, no unit provided (doi:10.1123/jab.17.2.113)
 
-if torque_t > 0
-    disp('Torque t needs adjustment')
-end
-
-if torque_e > 0
-    disp('Torque e needs adjustment')
-end
-
 x_dot(1) = x(2); % Theta dot (angular velocity)
 
-% original
+% Zhang et al. paper version
 x_dot(2) = (m*g*d*sin(x(1)) - k1*exp(k2*x(1)) + torque_t + torque_e + torque_v)/(m*d^2) % Angular acceleration
 
 % direction corrected

@@ -6,9 +6,12 @@ function [tibialis_anterior_length] = tibialis_length(x1)
 % Output
 % tibialis anterior length (m)
 
+% Convert x1 from paper's coordinate system to this coordinate system
+x1_adjusted = (pi/2) - x1;
+
 % define rotation matrix
-rotation = [cos(x1) -sin(x1) 
-   sin(x1) cos(x1)];
+rotation = [cos(x1_adjusted) -sin(x1_adjusted) 
+   sin(x1_adjusted) cos(x1_adjusted)];
 
 % coordinates in global reference frame
 origin = rotation * [0.3 -0.03]';
@@ -19,19 +22,16 @@ tibialis_anterior_length = sqrt(difference(1)^2 + difference(2)^2);
 
 %% Zhang et al. Coordinate System
 
-p_shank_o_ta = [-0.0155, 0.2175, 0.0134]; % calf origin of TA
-p_shank_oeff_ta = [0.0256, 0.0257, -0.0093]; % effective calf connection point of TA
-p_foot_ieff_ta = [0.0757, -0.0420, -0.0196]; % effective foot connection point of TA
-p_foot_i_ta = [0.1850, -0.0510, -0.0330]; % foot endpoint of TA
-p_foot_i_sol = [-0.0365, -0.0288, 0.0056]; % foot endpoint of SOL
-
-p_global_i_ta = 
-p_global_o_ta = 
-
-tibialis_anterior_length = p_foot_ieff_ta - p_global_i_ta + p_shank_oeff_ta - p_global_o_ta
-
-
-
+% p_shank_o_ta = [-0.0155, 0.2175, 0.0134]; % calf origin of TA
+% p_shank_oeff_ta = [0.0256, 0.0257, -0.0093]; % effective calf connection point of TA
+% p_foot_ieff_ta = [0.0757, -0.0420, -0.0196]; % effective foot connection point of TA
+% p_foot_i_ta = [0.1850, -0.0510, -0.0330]; % foot endpoint of TA
+% p_foot_i_sol = [-0.0365, -0.0288, 0.0056]; % foot endpoint of SOL
+% 
+% p_global_i_ta = 
+% p_global_o_ta = 
+% 
+% tibialis_anterior_length = p_foot_ieff_ta - p_global_i_ta + p_shank_oeff_ta - p_global_o_ta
 
 %%
 % 

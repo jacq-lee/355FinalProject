@@ -12,7 +12,10 @@ resting_length_tendon = tibialis_length(pi/2)*0.4;
 
 % Swing portion of gate cycle (s), taken from research
 T = 0.41; 
-x1_initial = 1.876; % Value obtained from literature (radians)
+% Initial ankle angle is value obtained from literature 
+% (107 degrees or 1.876 rad in 355 coordinate system)
+% x1_initial = -0.2967;
+x1_initial = 1.876;
 
 simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
 
