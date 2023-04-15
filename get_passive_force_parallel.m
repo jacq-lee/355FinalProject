@@ -25,7 +25,7 @@ l_pe = 0.9; % Normalized (m/m)
 if x3 < l_pe
     f_pe = 0;
 else
-    f_pe = f_peak_iso*atan((0.1*(x3 - l_pe) - 0.22)^10);
+    f_pe = f_peak_iso*atan( deg2rad((0.1*(x3 - l_pe) - 0.22)^10) );
 end
 
 end

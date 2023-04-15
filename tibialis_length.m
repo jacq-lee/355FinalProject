@@ -2,6 +2,7 @@ function [tibialis_anterior_length] = tibialis_length(x1)
 
 % Inputs
 % x1 (theta): body angle (up from prone horizontal)
+x1 = deg2rad(x1);
 
 % Output
 % tibialis anterior length (m)

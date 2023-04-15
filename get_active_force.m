@@ -17,7 +17,7 @@ q_sf = x4; % Activation signal q(s,f) -- Assumed to be equal to x4
 f_Fl = exp(-40*(x3 - 0.95)^4 + (x3 - 0.95)^2);
 
 % Relationship between muscle output force and speed (eq 10) - Normalized muscle force speed factor
-f_Fv = 0.54*atan(5.69*v_m + 0.51) + 0.745;
+f_Fv = 0.54*atan( deg2rad(5.69*v_m + 0.51) ) + 0.745;
 
 f_ce = F_bar*q_sf*f_Fl*f_Fv;
 

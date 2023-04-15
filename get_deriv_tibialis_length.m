@@ -2,6 +2,7 @@ function [deriv_l_mt] = get_deriv_tibialis_length(x1)
 
 % Inputs
 % x1 (theta): body angle (up from prone horizontal)
+x1 = deg2rad(x1);
 
 % Output
 % tibialis anterior length (m)

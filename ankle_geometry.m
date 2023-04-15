@@ -1,17 +1,17 @@
 function ankle_geometry()
 
-theta = deg2rad(-17);
+x1 = deg2rad(-60);
 
 % define rotation matrix
-rotation = [cos(theta) -sin(theta) 
-   sin(theta) cos(theta)];
+rotation = [cos(x1) -sin(x1) 
+   sin(x1) cos(x1)];
 
 % coordinates in global reference frame
 origin = [0.03, 0.3]';
 insertion = rotation * [0.06, -0.03]';
 
 difference = origin - insertion;
-tibialis_anterior_length = sqrt(difference(1)^2 + difference(2)^2)
+tibialis_anterior_length = sqrt(difference(1)^2 + difference(2)^2);
 
 % shank_x_og = [0, 0.03];
 % shank_y_og = [0, 0.3];

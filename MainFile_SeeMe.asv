@@ -15,14 +15,14 @@ T = 0.41;
 
 % Initial ankle angle is value obtained from literature 
 % (107 degrees or 1.8675 rad in 355 coordinate system)
-x1_initial = -0.2967;
+x1_initial = - 0.2967;
 
 simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
 
 [t1, state1, t_t1, t_e1] = simulate(T, simulation_1, x1_initial);
 
 %%
-% close all
+close all
 plot_results(t1, state1, t_t1, t_e1);
 
 %%
@@ -72,9 +72,9 @@ T = 0.41;
 
 % Initial ankle angle is value obtained from literature 
 % (107 degrees or 1.8675 rad in 355 coordinate system)
-x1_initial = - 0.2967;
+x1_initial = deg2rad(10);
 
-simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,0,0,resting_length_muscle,resting_length_tendon);
+simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25,resting_length_muscle,resting_length_tendon);
 
 [t1, state1, t_t1, t_e1] = simulate(T, simulation_1, x1_initial);
 

@@ -19,7 +19,7 @@ f_cf = 50; % Critical fusion frequency (Hz)
 
 if pw < pw_thr
     Q1_pw = 0;
-else if (pw_thr <= pw || pw <= pw_sat)
+elseif (pw_thr <= pw && pw <= pw_sat)
     Q1_pw = (pw - pw_thr)/(pw_sat - pw_thr);
 else
     Q1_pw = 1;

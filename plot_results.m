@@ -76,6 +76,7 @@ legend({'Combined Torque', 'Active Torque', 'Passive Torque'},'Location','southe
 
 % Torque over Time
 figure()
+plot(time, combined_torque, 'r', 'LineWidth', LineWidth), hold on;
 plot(time, torque_t, 'g', 'LineWidth', LineWidth), hold on;
 plot(time, torque_e, 'b', 'LineWidth', LineWidth), hold off;
 
@@ -107,12 +108,12 @@ ylabel('TA Length (Normalized)')
 grid on
 
 % Activation
-% figure()
-% plot(time, activation, 'k', 'LineWidth',LineWidth);
-% 
-% title('Activation over Time (x4)')
-% xlabel('Time (s)')
-% ylabel('Activation')
-% grid on
+figure()
+plot(time, activation, 'k', 'LineWidth',LineWidth);
+
+title('Activation over Time (x4)')
+xlabel('Time (s)')
+ylabel('Activation')
+grid on
 
 end
