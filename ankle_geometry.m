@@ -1,6 +1,6 @@
-function ankle_geometry()
+function ankle_geometry(x1)
 
-x1 = deg2rad(-60);
+x1 = deg2rad(x1)
 
 % define rotation matrix
 rotation = [cos(x1) -sin(x1) 

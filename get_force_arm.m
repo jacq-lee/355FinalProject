@@ -7,10 +7,9 @@ function [gamma_ma] = get_force_arm(x1)
 % gamma_ma: force arm
 
 %% Using the Force Arm versus Angle Curve
-% x1 = rad2deg(x1);
 
 % gamma_ma_mm = -0.0069*(x1^2) + 0.769*x1 - 1.3602;
-
+% 
 % gamma_ma = gamma_ma_mm/1000;
 
 %% Finding the average value between 5 and 45 degrees
@@ -27,3 +26,5 @@ function [gamma_ma] = get_force_arm(x1)
 
 % gamma_ma = 0.0126;
 gamma_ma = 0.001;
+
+end

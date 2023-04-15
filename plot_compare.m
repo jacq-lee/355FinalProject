@@ -12,16 +12,8 @@ angular_velocity_b = state_b(:,2);
 TA_normalized_length_b = state_b(:,3);
 activation_b = state_b(:,4); 
 
-% Joint angle
-joint_angle_a = rad2deg(ankle_angle_a).*(-1) + 90;
-joint_angle_b = rad2deg(ankle_angle_b).*(-1) + 90;
-joint_angular_velocity_a = rad2deg(angular_velocity_a).*(-1);
-joint_angular_velocity_b = rad2deg(angular_velocity_b).*(-1);
-
-
 %%% Plotting
 LineWidth = 1.5;
-
 
 % All States over Time
 figure()
@@ -38,13 +30,13 @@ plot(time_b, activation_b, 'b', 'LineStyle', '-.', 'LineWidth', LineWidth-0.5), 
 title('States over Time')
 xlabel('Time (s)')
 grid on
-legend({'Ankle Angle (rad)','Angular Velocity (rad/s)','Normalized TA Length','FEA Activaton'},...
+legend({'Ankle Angle (°)','Angular Velocity (°/s)','Normalized TA Length','FEA Activaton'},...
     'Location','southeast')
 
 % Joint Angle over Time
 figure()
-plot(time_a, joint_angle_a, 'r', 'LineWidth', LineWidth), hold on
-plot(time_b, joint_angle_b, 'b', 'LineWidth', LineWidth), hold off
+plot(time_a, ankle_angle_a, 'r', 'LineWidth', LineWidth), hold on
+plot(time_b, ankle_angle_b, 'b', 'LineWidth', LineWidth), hold off
 
 title('Joint Angle over Time (x1)')
 xlabel('Time (s)')
@@ -55,8 +47,8 @@ legend({name_a, name_b},'Location','southeast')
 
 % Joint Angular Velocity over Time
 figure()
-plot(time_a, joint_angular_velocity_a, 'r', 'LineWidth', LineWidth), hold on
-plot(time_b, joint_angular_velocity_b, 'b', 'LineWidth', LineWidth), hold off
+plot(time_a, angular_velocity_a, 'r', 'LineWidth', LineWidth), hold on
+plot(time_b, angular_velocity_b, 'b', 'LineWidth', LineWidth), hold off
 
 title('Joint Angular Velocity over Time (x2)')
 xlabel('Time (s)')
