@@ -54,6 +54,19 @@ ylabel('Torque (N*m)')
 grid on
 legend({'Combined Torque', 'Active Torque', 'Passive Torque'},'Location','southeast')
 
+% Validation: Torque versus Ankle Joint Angle
+literatureData = readtable('TorquevsAngle.csv');
+literatureData = renamevars(literatureData, ["Var1", "Var2"], ["angle", "torque"]);
+figure()
+plot(ankle_angle, combined_torque, 'r', 'LineWidth', LineWidth), hold on;
+plot(literatureData.angle, literatureData.torque, 'k', 'LineWidth', LineWidth), hold off;
+
+title('Validation: Torque versus Ankle Joint Angle')
+xlabel('Ankle Joint Angle (°)')
+ylabel('Torque (N*m)')
+grid on
+legend({'Combined Torque','Zhang et Al Simulated Torque'},'Location','northeast')
+
 % Torque over Time
 figure()
 plot(time, combined_torque, 'r', 'LineWidth', LineWidth), hold on;
