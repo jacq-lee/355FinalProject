@@ -1,4 +1,5 @@
 function [gamma_ma] = get_force_arm(x1)
+% Archived function
 
 % Inputs
 % x1: theta, the ankle joint angle
@@ -22,9 +23,9 @@ function [gamma_ma] = get_force_arm(x1)
 % 
 % average_length = mean(gamma_ma)/1000
 
-%% Using the average force arm length
+%% Using a fixed force arm length
 
-% gamma_ma = 0.0126;
+% gamma_ma = 0.0126; % average from 5 to 45 degrees
 gamma_ma = 0.001;
 
 end

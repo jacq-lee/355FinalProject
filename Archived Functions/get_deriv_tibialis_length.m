@@ -1,4 +1,5 @@
 function [deriv_l_mt] = get_deriv_tibialis_length(x1)
+% Archived function
 
 % Inputs
 % x1 (theta): body angle (up from prone horizontal)
