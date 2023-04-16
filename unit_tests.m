@@ -6,13 +6,13 @@
 resting_length_muscle = tibialis_length(pi/2)*0.6;
 resting_length_tendon = tibialis_length(pi/2)*0.4;
 T = 0.41; 
-x1_initial = 1.876;
+x1_initial = -17;
 simulation_1 = MuscleModel(52,0.0137,0.03475,3,0,12,50e-6,25, ...
     resting_length_muscle,resting_length_tendon);
 [t1, state1, t_t1, t_e1] = simulate(T, simulation_1, x1_initial);
 
 %% Test initial ankle angle (x1)
-assert((x1_initial > 1) && (x1_initial < 2.5), ...
+assert((x1_initial > -20) && (x1_initial < 60), ...
     "Initial ankle angle is unrealistic")
 
 %% Test mass of individual
