@@ -26,7 +26,7 @@ n = 0.099;
 % lt_norm = norm_length_tendon(obj, length_muscle_tendon_unit, normalized_muscle_length (x3))
 lt_norm = muscle_model.norm_tendon_length(tibialis_length(x(1)), x(3)); % Normalized length of muscle tendon
 
-gamma_ma = 0.001;
+gamma_ma = get_force_arm(x(1));
 
 v_m = get_velocity(x(1), x(2));
 
