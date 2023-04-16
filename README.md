@@ -12,3 +12,7 @@ The results were validated through comparing plots to literature. A limitation o
 
 The following paper was used as a reference throughout the project:
 X. Zhang, Z. Jiang, X. Li, P. Xu, Z. Lucev Vasic, I. Culjak, M. Cifrek, M. Du, and Y.-ming Gao, “Dynamics combined with Hill model for functional electrical stimulation ankle angle prediction,” IEEE Journal of Biomedical and Health Informatics, 2021. Available: 10.1109/jbhi.2022.3158426
+
+Here's a gif of our model in action!
+
+<img src="https://github.com/jacq-lee/355FinalProject/blob/main/Model%20v2%20Plots/Ankle%20Geometry%20Visualization.gif" alt="Ankle moving over time" width="50%" height="50%">
