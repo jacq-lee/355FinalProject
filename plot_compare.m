@@ -19,8 +19,10 @@ ankle_angle_b_rad = deg2rad(ankle_angle_b);
 angular_velocity_a_rad = deg2rad(angular_velocity_a);
 angular_velocity_b_rad = deg2rad(angular_velocity_b);
 
+
 %%% Plotting
 LineWidth = 1.5;
+
 
 % All States over Time
 figure()
@@ -39,6 +41,7 @@ xlabel('Time (s)')
 grid on
 legend({'Ankle Angle (Rad)','Angular Velocity (Rad/s)','Normalized TA Length','FEA Activaton'},...
     'Location','southeast')
+
 
 % Ankle Angle over Time
 figure()
@@ -86,19 +89,5 @@ xlabel('Time (s)')
 ylabel('Activation')
 grid on
 legend({name_a, name_b},'Location','southeast')
-
-% Validation: Torque versus Ankle Joint Angle
-literatureData = readtable('TorquevsAngle.csv');
-literatureData = renamevars(literatureData, ["Var1", "Var2"], ["angle", "torque"]);
-figure()
-plot(ankle_angle, combined_torque, 'r', 'LineWidth', LineWidth), hold on;
-plot(literatureData.angle, literatureData.torque, 'k', 'LineWidth', LineWidth), hold off;
-
-title('Validation: Torque versus Ankle Angle')
-xlabel('Ankle Angle (°)')
-ylabel('Torque (N*m)')
-grid on
-legend({'Combined Torque','Zhang et Al Simulated Torque'},'Location','northeast')
-
 
 end
