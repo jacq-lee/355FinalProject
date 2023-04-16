@@ -16,7 +16,7 @@ b_1k = -0.0843;
 a_2k = -7.9763;
 b_2k = 0.1949;
 c = -1.792;
-
+% gamma_ma = 0.001;
 
 torque_t = zeros(length(x), 1);
 torque_e = zeros(length(x), 1);

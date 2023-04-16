@@ -25,8 +25,23 @@ simulation_1 = MuscleModel(52,0.0137,0.03475,2.73,0,12,50e-6,25,resting_length_m
 plot_results(t1, state1, t_t1, t_e1);
 
 %% Plot Ankle Geometry for Simulation 1
-for i = linspace(1,length(state1), 6)
-    ankle_geometry(state1(i,1));
+
+filename = 'Model v2 Plots\Ankle Geometry Visualization.gif';
+
+for i = 1:length(state1)
+    % Plot the figure
+    ankle_geometry(state1(i))
+    pause(0.1)
+
+    % Saving the figure
+    frame = getframe(gcf);
+    im = frame2im(frame);
+    [imind,cm] = rgb2ind(im,256);
+    if i == 1
+        imwrite(imind,cm,filename,'gif','Loopcount',inf,'DelayTime',0.1);
+    else
+        imwrite(imind,cm,filename,'gif','WriteMode','append','DelayTime',0.1);
+    end
 end
 
 %% Simulation 2 - High pw
