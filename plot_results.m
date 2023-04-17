@@ -10,8 +10,10 @@ ankle_angle_rad = deg2rad(ankle_angle);
 angular_velocity_rad = deg2rad(angular_velocity);
 combined_torque = torque_t + torque_e;
 
+
 %%% Plotting
 LineWidth = 1.5;
+
 
 % All States over Time, Degrees, Normalized Length
 figure()
@@ -27,7 +29,7 @@ legend({'Ankle Angle (Rad)', 'Angular Velocity (Rad/s)', 'Normalized TA Length',
     'Location','southeast')
 
 
-% Ankle Angle over Time
+% Ankle Angle over Time (x1)
 figure()
 plot(time, ankle_angle, 'r', 'LineWidth', LineWidth)
 title('Ankle Angle over Time (x_1)')
@@ -35,13 +37,14 @@ xlabel('Time (s)')
 ylabel('Ankle Angle (°)')
 grid on
 
-% Ankle Angular Velocity over Time
+% Ankle Angular Velocity over Time (x2)
 figure()
 plot(time, angular_velocity, 'g', 'LineWidth', LineWidth)
 title('Ankle Angular Velocity over Time (x_2)')
 xlabel('Time (s)')
 ylabel('Angular Velocity (°/s)')
 grid on
+
 
 % Torque versus Ankle Angle
 figure()
@@ -56,6 +59,7 @@ ylabel('Torque (N*m)')
 grid on
 legend('Combined Torque', 'Active Torque', 'Passive Torque')
 
+
 % Validation: Torque versus Ankle Joint Angle
 literatureData = readtable('TorquevsAngle.csv');
 literatureData = renamevars(literatureData, ["Var1", "Var2"], ["angle", "torque"]);
@@ -68,6 +72,7 @@ xlabel('Ankle Joint Angle (°)')
 ylabel('Torque (N*m)')
 grid on
 legend({'Combined Torque','Zhang et Al Simulated Torque'},'Location','northeast')
+
 
 % Torque over Time
 figure()
@@ -82,6 +87,7 @@ xlim([0 0.1])
 grid on
 legend('Combined Torque', 'Active Torque', 'Passive Torque')
 
+
 % TA Length (x3)
 figure()
 plot(time, TA_normalized_length, 'b', 'LineWidth',LineWidth)
@@ -90,7 +96,8 @@ xlabel('Time (s)')
 ylabel('TA Length (Normalized)')
 grid on
 
-% Activation
+
+% Activation (x4)
 figure()
 plot(time, activation, 'k', 'LineWidth',LineWidth);
 

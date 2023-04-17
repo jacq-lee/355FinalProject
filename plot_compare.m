@@ -43,7 +43,7 @@ legend({'Ankle Angle (Rad)','Angular Velocity (Rad/s)','Normalized TA Length','F
     'Location','southeast')
 
 
-% Ankle Angle over Time
+% Ankle Angle over Time (x1)
 figure()
 plot(time_a, ankle_angle_a, 'r', 'LineWidth', LineWidth), hold on
 plot(time_b, ankle_angle_b, 'b', 'LineWidth', LineWidth), hold off
@@ -55,7 +55,7 @@ grid on
 legend(name_a, name_b)
 
 
-% Ankle Angular Velocity over Time
+% Ankle Angular Velocity over Time (x2)
 figure()
 plot(time_a, angular_velocity_a, 'r', 'LineWidth', LineWidth), hold on
 plot(time_b, angular_velocity_b, 'b', 'LineWidth', LineWidth), hold off
@@ -67,7 +67,7 @@ grid on
 legend(name_a, name_b)
 
 
-% TA Length
+% TA Length (x3)
 figure()
 plot(time_a, TA_normalized_length_a, 'r', 'LineWidth',LineWidth), hold on
 plot(time_b, TA_normalized_length_b, 'b', 'LineWidth',LineWidth), hold off
@@ -79,7 +79,7 @@ grid on
 legend(name_a, name_b)
 
 
-% Activation
+% Activation (x4)
 figure()
 plot(time_a, activation_a, 'r', 'LineWidth',LineWidth), hold on
 plot(time_b, activation_b, 'b', 'LineWidth',LineWidth), hold off
